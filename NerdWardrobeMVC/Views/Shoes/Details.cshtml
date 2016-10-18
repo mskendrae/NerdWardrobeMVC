@@ -1,0 +1,35 @@
+﻿@model NerdWardrobeMVC.Models.Sho
+
+@{
+    ViewBag.Title = "Shoe Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Shoes</h4>
+    <hr />
+    <hr />
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail detailBorder">
+
+            <div class="caption">
+                <p>@Html.DisplayNameFor(modelItem => Model.ShoeName): @Html.DisplayFor(model => model.ShoeName)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.ShoeType): @Html.DisplayFor(model => model.ShoeType)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.ShoeColor): @Html.DisplayFor(model => model.ShoeColor)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.Occassion.OccassionName): @Html.DisplayFor(model => model.Occassion.OccassionName)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.Season.SeasonName): @Html.DisplayFor(model => model.Season.SeasonName)</p>
+
+                <img src="@Url.Content(@Model.ShoePhoto)" />
+
+
+                <hr />
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ShoesID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Model.ShoesID }) |
+                @Html.ActionLink("Back to List", "Index")
+
+            </div>
+        </div>
+    </div>
+
+</div>

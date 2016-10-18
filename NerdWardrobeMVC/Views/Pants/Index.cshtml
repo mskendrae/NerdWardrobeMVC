@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NerdWardrobeMVC.Models.Pant>
+
+@{
+    ViewBag.Title = "Bottoms List";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="@Url.Content(@item.PantsPhoto)" />
+                <div class="caption">
+                    <h3>@Html.DisplayFor(modelItem => item.PantsName)</h3>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = item.PantsId })</button>
+
+                    <hr />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PantsId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PantsId })
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,38 @@
+﻿@model NerdWardrobeMVC.Models.Pant
+
+@{
+    ViewBag.Title = " Bottom Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Bottoms</h4>
+    <hr />
+    
+    
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail detailBorder">
+           
+            <div class="caption">
+                <p>@Html.DisplayNameFor(modelItem => Model.PantsName): @Html.DisplayFor(model => model.PantsName)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.PantsType): @Html.DisplayFor(model => model.PantsType)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.PantsColor): @Html.DisplayFor(model => model.PantsColor)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.Occassion.OccassionName): @Html.DisplayFor(model => model.Occassion.OccassionName)</p>
+                <p>@Html.DisplayNameFor(modelItem => Model.Season.SeasonName): @Html.DisplayFor(model => model.Season.SeasonName)</p>
+                
+                 <img src="@Url.Content(@Model.PantsPhoto)" />
+
+               
+                <hr />
+                @Html.ActionLink("Edit", "Edit", new { id = Model.PantsId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Model.PantsId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    </div>
+</div>    
+    
+    
+    
+    

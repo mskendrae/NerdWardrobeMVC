@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f574d92970342239febc553b22952cf" Name="Diagram1">
+        <EntityTypeShape EntityType="NerdWardrobeModel.Accessory" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NerdWardrobeModel.Occassion" Width="1.5" PointX="4.875" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NerdWardrobeModel.Outfile" Width="1.5" PointX="7.125" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NerdWardrobeModel.Pant" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NerdWardrobeModel.Season" Width="1.5" PointX="4.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NerdWardrobeModel.Shirt" Width="1.5" PointX="2.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NerdWardrobeModel.Sho" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Outfile_Accessories" ManuallyRouted="false" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Outfile_Pants" ManuallyRouted="false" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Outfile_Shirts" ManuallyRouted="false" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Outfile_Shoes" ManuallyRouted="false" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Accessories_Occassion" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Accessories_Season" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Pants_Occassion" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Shirts_Occassion" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Shoes_Occassion" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Pants_Season" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Shirts_Season" />
+        <AssociationConnector Association="NerdWardrobeModel.FK_Shoes_Season" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

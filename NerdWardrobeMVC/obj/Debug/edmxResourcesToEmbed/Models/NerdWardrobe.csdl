@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NerdWardrobeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accessory">
+    <Key>
+      <PropertyRef Name="AccessoriesID" />
+    </Key>
+    <Property Name="AccessoriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccessName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccessType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccessColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccessPhoto" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="OccassionID" Type="Int32" />
+    <Property Name="SeasonID" Type="Int32" />
+    <NavigationProperty Name="Outfiles" Relationship="Self.FK_Outfile_Accessories" FromRole="Accessories" ToRole="Outfile" />
+    <NavigationProperty Name="Occassion" Relationship="NerdWardrobeModel.FK_Accessories_Occassion" FromRole="Accessory" ToRole="Occassion" />
+    <NavigationProperty Name="Season" Relationship="NerdWardrobeModel.FK_Accessories_Season" FromRole="Accessory" ToRole="Season" />
+  </EntityType>
+  <EntityType Name="Occassion">
+    <Key>
+      <PropertyRef Name="OccassionID" />
+    </Key>
+    <Property Name="OccassionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OccassionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Accessories" Relationship="NerdWardrobeModel.FK_Accessories_Occassion" FromRole="Occassion" ToRole="Accessory" />
+    <NavigationProperty Name="Pants" Relationship="NerdWardrobeModel.FK_Pants_Occassion" FromRole="Occassion" ToRole="Pant" />
+    <NavigationProperty Name="Shirts" Relationship="NerdWardrobeModel.FK_Shirts_Occassion" FromRole="Occassion" ToRole="Shirt" />
+    <NavigationProperty Name="Shoes" Relationship="NerdWardrobeModel.FK_Shoes_Occassion" FromRole="Occassion" ToRole="Sho" />
+  </EntityType>
+  <EntityType Name="Outfile">
+    <Key>
+      <PropertyRef Name="OutfitID" />
+    </Key>
+    <Property Name="OutfitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShirtID" Type="Int32" />
+    <Property Name="PantsId" Type="Int32" />
+    <Property Name="AccessoriesID" Type="Int32" />
+    <Property Name="ShoesID" Type="Int32" />
+    <NavigationProperty Name="Accessory" Relationship="Self.FK_Outfile_Accessories" FromRole="Outfile" ToRole="Accessories" />
+    <NavigationProperty Name="Pant" Relationship="Self.FK_Outfile_Pants" FromRole="Outfile" ToRole="Pants" />
+    <NavigationProperty Name="Shirt" Relationship="Self.FK_Outfile_Shirts" FromRole="Outfile" ToRole="Shirts" />
+    <NavigationProperty Name="Sho" Relationship="Self.FK_Outfile_Shoes" FromRole="Outfile" ToRole="Shoes" />
+  </EntityType>
+  <EntityType Name="Pant">
+    <Key>
+      <PropertyRef Name="PantsId" />
+    </Key>
+    <Property Name="PantsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PantsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PantsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PantsColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PantsPhoto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OccassionID" Type="Int32" />
+    <Property Name="SeasonID" Type="Int32" />
+    <NavigationProperty Name="Outfiles" Relationship="Self.FK_Outfile_Pants" FromRole="Pants" ToRole="Outfile" />
+    <NavigationProperty Name="Occassion" Relationship="NerdWardrobeModel.FK_Pants_Occassion" FromRole="Pant" ToRole="Occassion" />
+    <NavigationProperty Name="Season" Relationship="NerdWardrobeModel.FK_Pants_Season" FromRole="Pant" ToRole="Season" />
+  </EntityType>
+  <EntityType Name="Season">
+    <Key>
+      <PropertyRef Name="SeasonID" />
+    </Key>
+    <Property Name="SeasonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SeasonName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Accessories" Relationship="NerdWardrobeModel.FK_Accessories_Season" FromRole="Season" ToRole="Accessory" />
+    <NavigationProperty Name="Pants" Relationship="NerdWardrobeModel.FK_Pants_Season" FromRole="Season" ToRole="Pant" />
+    <NavigationProperty Name="Shirts" Relationship="NerdWardrobeModel.FK_Shirts_Season" FromRole="Season" ToRole="Shirt" />
+    <NavigationProperty Name="Shoes" Relationship="NerdWardrobeModel.FK_Shoes_Season" FromRole="Season" ToRole="Sho" />
+  </EntityType>
+  <EntityType Name="Shirt">
+    <Key>
+      <PropertyRef Name="ShirtID" />
+    </Key>
+    <Property Name="ShirtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShirtName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShirtType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShirtColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShirtPhoto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OccassionID" Type="Int32" />
+    <Property Name="SeasonID" Type="Int32" />
+    <NavigationProperty Name="Outfiles" Relationship="Self.FK_Outfile_Shirts" FromRole="Shirts" ToRole="Outfile" />
+    <NavigationProperty Name="Occassion" Relationship="NerdWardrobeModel.FK_Shirts_Occassion" FromRole="Shirt" ToRole="Occassion" />
+    <NavigationProperty Name="Season" Relationship="NerdWardrobeModel.FK_Shirts_Season" FromRole="Shirt" ToRole="Season" />
+  </EntityType>
+  <EntityType Name="Sho">
+    <Key>
+      <PropertyRef Name="ShoesID" />
+    </Key>
+    <Property Name="ShoesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShoeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShoeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShoeColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShoePhoto" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OccassionID" Type="Int32" />
+    <Property Name="SeasonID" Type="Int32" />
+    <NavigationProperty Name="Outfiles" Relationship="Self.FK_Outfile_Shoes" FromRole="Shoes" ToRole="Outfile" />
+    <NavigationProperty Name="Occassion" Relationship="NerdWardrobeModel.FK_Shoes_Occassion" FromRole="Sho" ToRole="Occassion" />
+    <NavigationProperty Name="Season" Relationship="NerdWardrobeModel.FK_Shoes_Season" FromRole="Sho" ToRole="Season" />
+  </EntityType>
+  <Association Name="FK_Outfile_Accessories">
+    <End Role="Accessories" Type="Self.Accessory" Multiplicity="0..1" />
+    <End Role="Outfile" Type="Self.Outfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accessories">
+        <PropertyRef Name="AccessoriesID" />
+      </Principal>
+      <Dependent Role="Outfile">
+        <PropertyRef Name="AccessoriesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Outfile_Pants">
+    <End Role="Pants" Type="Self.Pant" Multiplicity="0..1" />
+    <End Role="Outfile" Type="Self.Outfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pants">
+        <PropertyRef Name="PantsId" />
+      </Principal>
+      <Dependent Role="Outfile">
+        <PropertyRef Name="PantsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Outfile_Shirts">
+    <End Role="Shirts" Type="Self.Shirt" Multiplicity="0..1" />
+    <End Role="Outfile" Type="Self.Outfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shirts">
+        <PropertyRef Name="ShirtID" />
+      </Principal>
+      <Dependent Role="Outfile">
+        <PropertyRef Name="ShirtID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Outfile_Shoes">
+    <End Role="Shoes" Type="Self.Sho" Multiplicity="0..1" />
+    <End Role="Outfile" Type="Self.Outfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shoes">
+        <PropertyRef Name="ShoesID" />
+      </Principal>
+      <Dependent Role="Outfile">
+        <PropertyRef Name="ShoesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NerdWardrobeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accessories" EntityType="Self.Accessory" />
+    <EntitySet Name="Occassions" EntityType="Self.Occassion" />
+    <EntitySet Name="Outfiles" EntityType="Self.Outfile" />
+    <EntitySet Name="Pants" EntityType="Self.Pant" />
+    <EntitySet Name="Seasons" EntityType="Self.Season" />
+    <EntitySet Name="Shirts" EntityType="Self.Shirt" />
+    <EntitySet Name="Shoes" EntityType="Self.Sho" />
+    <AssociationSet Name="FK_Outfile_Accessories" Association="Self.FK_Outfile_Accessories">
+      <End Role="Accessories" EntitySet="Accessories" />
+      <End Role="Outfile" EntitySet="Outfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Outfile_Pants" Association="Self.FK_Outfile_Pants">
+      <End Role="Pants" EntitySet="Pants" />
+      <End Role="Outfile" EntitySet="Outfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Outfile_Shirts" Association="Self.FK_Outfile_Shirts">
+      <End Role="Shirts" EntitySet="Shirts" />
+      <End Role="Outfile" EntitySet="Outfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Outfile_Shoes" Association="Self.FK_Outfile_Shoes">
+      <End Role="Shoes" EntitySet="Shoes" />
+      <End Role="Outfile" EntitySet="Outfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accessories_Occassion" Association="NerdWardrobeModel.FK_Accessories_Occassion">
+      <End Role="Occassion" EntitySet="Occassions" />
+      <End Role="Accessory" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Accessories_Season" Association="NerdWardrobeModel.FK_Accessories_Season">
+      <End Role="Season" EntitySet="Seasons" />
+      <End Role="Accessory" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pants_Occassion" Association="NerdWardrobeModel.FK_Pants_Occassion">
+      <End Role="Occassion" EntitySet="Occassions" />
+      <End Role="Pant" EntitySet="Pants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shirts_Occassion" Association="NerdWardrobeModel.FK_Shirts_Occassion">
+      <End Role="Occassion" EntitySet="Occassions" />
+      <End Role="Shirt" EntitySet="Shirts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shoes_Occassion" Association="NerdWardrobeModel.FK_Shoes_Occassion">
+      <End Role="Occassion" EntitySet="Occassions" />
+      <End Role="Sho" EntitySet="Shoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pants_Season" Association="NerdWardrobeModel.FK_Pants_Season">
+      <End Role="Season" EntitySet="Seasons" />
+      <End Role="Pant" EntitySet="Pants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shirts_Season" Association="NerdWardrobeModel.FK_Shirts_Season">
+      <End Role="Season" EntitySet="Seasons" />
+      <End Role="Shirt" EntitySet="Shirts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shoes_Season" Association="NerdWardrobeModel.FK_Shoes_Season">
+      <End Role="Season" EntitySet="Seasons" />
+      <End Role="Sho" EntitySet="Shoes" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Accessories_Occassion">
+    <End Type="NerdWardrobeModel.Occassion" Role="Occassion" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Accessory" Role="Accessory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Occassion">
+        <PropertyRef Name="OccassionID" />
+      </Principal>
+      <Dependent Role="Accessory">
+        <PropertyRef Name="OccassionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Accessories_Season">
+    <End Type="NerdWardrobeModel.Season" Role="Season" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Accessory" Role="Accessory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="SeasonID" />
+      </Principal>
+      <Dependent Role="Accessory">
+        <PropertyRef Name="SeasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pants_Occassion">
+    <End Type="NerdWardrobeModel.Occassion" Role="Occassion" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Pant" Role="Pant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Occassion">
+        <PropertyRef Name="OccassionID" />
+      </Principal>
+      <Dependent Role="Pant">
+        <PropertyRef Name="OccassionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shirts_Occassion">
+    <End Type="NerdWardrobeModel.Occassion" Role="Occassion" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Shirt" Role="Shirt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Occassion">
+        <PropertyRef Name="OccassionID" />
+      </Principal>
+      <Dependent Role="Shirt">
+        <PropertyRef Name="OccassionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shoes_Occassion">
+    <End Type="NerdWardrobeModel.Occassion" Role="Occassion" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Sho" Role="Sho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Occassion">
+        <PropertyRef Name="OccassionID" />
+      </Principal>
+      <Dependent Role="Sho">
+        <PropertyRef Name="OccassionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pants_Season">
+    <End Type="NerdWardrobeModel.Season" Role="Season" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Pant" Role="Pant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="SeasonID" />
+      </Principal>
+      <Dependent Role="Pant">
+        <PropertyRef Name="SeasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shirts_Season">
+    <End Type="NerdWardrobeModel.Season" Role="Season" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Shirt" Role="Shirt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="SeasonID" />
+      </Principal>
+      <Dependent Role="Shirt">
+        <PropertyRef Name="SeasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shoes_Season">
+    <End Type="NerdWardrobeModel.Season" Role="Season" Multiplicity="0..1" />
+    <End Type="NerdWardrobeModel.Sho" Role="Sho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="SeasonID" />
+      </Principal>
+      <Dependent Role="Sho">
+        <PropertyRef Name="SeasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
